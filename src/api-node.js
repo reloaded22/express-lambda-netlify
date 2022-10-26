@@ -1,18 +1,25 @@
 const express = require("express");
 const path = require("path");
+const serverless = require("serverless-http");
 
 const app = express();
 app.use(express.static('public')); // If not added throws error 1 and 2
 
-app.get("/", (req, res)=> {
-    res.sendFile(path.join(__dirname, "..", "dist", "index.html"))
-})
 
-app.post("/button-2", (req, res)=>{
-    res.send({
-        message: "Message from API"
-    })
-})
+// app.get("/", (req, res)=> {
+//     res.sendFile(path.join(__dirname, "..", "publi", "index.html"))
+// })
+
+// app.post("/", (req, res)=>{
+//     res.send({
+//         message: "Message from API"
+//     })
+// })
+
+/* const handler = serverless(app);
+module.exports.funcName = async (context, req) => {
+    context.res = await handler(context, req);
+} */
 
 app.listen("3000", ()=>{
     console.log("Server is running on port 3000\n")
